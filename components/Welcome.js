@@ -7,7 +7,7 @@ const Welcome = ({ navigation }) => {
   const signInUser = () => {
     signInAnonymously(auth)
       .then((result) => {
-        navigation.navigate('ShoppingLists', { userID: result.user.uid });
+        navigation.navigate('Lists', { userID: result.user.uid });
         Alert.alert('Signed in Successfully!');
       })
       .catch((error) => {

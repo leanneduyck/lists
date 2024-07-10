@@ -13,7 +13,7 @@ import {
 } from 'firebase/firestore';
 
 // import the screens
-import ShoppingLists from './components/ShoppingLists';
+import ShoppingLists from './components/Lists';
 import Welcome from './components/Welcome';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { useEffect, useState } from 'react';
@@ -21,15 +21,13 @@ import { useEffect, useState } from 'react';
 import { Alert, LogBox } from 'react-native';
 LogBox.ignoreLogs(['AsyncStorage has been extracted from']);
 
+import { FIREBASE_CONFIG } from '@env';
+
 const App = () => {
   const connectionStatus = useNetInfo();
 
-  const firebaseConfig = {
-    // USE YOUR OWN FIREBASE CONFIG
-  };
-
-  // initialize Firebase
-  const app = initializeApp(firebaseConfig);
+  // initialize Firebase, and get the configuration from .env
+  const app = initializeApp(JSON.parse(FIREBASE_CONFIG));
 
   // initialize Cloud Firestore and get a reference to the service
   const db = getFirestore(app);
@@ -47,7 +45,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen name="Welcome" component={Welcome} />
-        <Stack.Screen name="ShoppingLists">
+        <Stack.Screen name="Lists">
           {(props) => (
             <ShoppingLists
               isConnected={connectionStatus.isConnected}

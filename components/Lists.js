@@ -18,7 +18,7 @@ import {
 } from 'firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const ShoppingLists = ({ db, route, isConnected }) => {
+const Lists = ({ db, route, isConnected }) => {
   const { userID } = route.params;
 
   const [lists, setLists] = useState([]);
@@ -26,53 +26,47 @@ const ShoppingLists = ({ db, route, isConnected }) => {
   const [item1, setItem1] = useState('');
   const [item2, setItem2] = useState('');
 
-  let unsubShoppinglists;
+  let unsubLists;
 
   useEffect(() => {
     if (isConnected === true) {
       // unregister current onSnapshot() listener to avoid registering multiple listeners when
       // useEffect code is re-executed.
-      if (unsubShoppinglists) unsubShoppinglists();
-      unsubShoppinglists = null;
+      if (unsubLists) unsubLists();
+      unsubLists = null;
 
-      const q = query(
-        collection(db, 'shoppinglists'),
-        where('uid', '==', userID)
-      );
-      unsubShoppinglists = onSnapshot(q, (documentsSnapshot) => {
+      const q = query(collection(db, 'lists'), where('uid', '==', userID));
+      unsubLists = onSnapshot(q, (documentsSnapshot) => {
         let newLists = [];
         documentsSnapshot.forEach((doc) => {
           newLists.push({ id: doc.id, ...doc.data() });
         });
-        cacheShoppingLists(newLists);
+        cacheLists(newLists);
         setLists(newLists);
       });
     } else loadCachedLists();
 
     // Clean up code
     return () => {
-      if (unsubShoppinglists) unsubShoppinglists();
+      if (unsubLists) unsubLists();
     };
   }, [isConnected]);
 
   const loadCachedLists = async () => {
-    const cachedLists = (await AsyncStorage.getItem('shopping_lists')) || [];
+    const cachedLists = (await AsyncStorage.getItem('saved_lists')) || [];
     setLists(JSON.parse(cachedLists));
   };
 
-  const cacheShoppingLists = async (listsToCache) => {
+  const cacheLists = async (listsToCache) => {
     try {
-      await AsyncStorage.setItem(
-        'shopping_lists',
-        JSON.stringify(listsToCache)
-      );
+      await AsyncStorage.setItem('saved_lists', JSON.stringify(listsToCache));
     } catch (error) {
       console.log(error.message);
     }
   };
 
   const addShoppingList = async (newList) => {
-    const newListRef = await addDoc(collection(db, 'shoppinglists'), newList);
+    const newListRef = await addDoc(collection(db, 'lists'), newList);
     if (newListRef.id) {
       setLists([newList, ...lists]);
       Alert.alert(`The list "${listName}" has been added.`);
@@ -122,7 +116,7 @@ const ShoppingLists = ({ db, route, isConnected }) => {
                 name: listName,
                 items: [item1, item2],
               };
-              addShoppingList(newList);
+              addList(newList);
             }}
           >
             <Text style={styles.addButtonText}>Add</Text>
@@ -200,4 +194,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ShoppingLists;
+export default Lists;
