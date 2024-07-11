@@ -21,13 +21,20 @@ import { useEffect, useState } from 'react';
 import { Alert, LogBox } from 'react-native';
 LogBox.ignoreLogs(['AsyncStorage has been extracted from']);
 
-import { FIREBASE_CONFIG } from '@env';
-
 const App = () => {
   const connectionStatus = useNetInfo();
 
+  const firebaseConfig = {
+    apiKey: 'AIzaSyA2KDRGmvOaql91cDk5H9qM4z8LV4_wle8',
+    authDomain: 'lists-d24c2.firebaseapp.com',
+    projectId: 'lists-d24c2',
+    storageBucket: 'lists-d24c2.appspot.com',
+    messagingSenderId: '574078335396',
+    appId: '1:574078335396:web:95ab91caf272aa7c876931',
+  };
+
   // initialize Firebase, and get the configuration from .env
-  const app = initializeApp(JSON.parse(FIREBASE_CONFIG));
+  const app = initializeApp(firebaseConfig);
 
   // initialize Cloud Firestore and get a reference to the service
   const db = getFirestore(app);

@@ -1,4 +1,11 @@
-import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Alert,
+  ImageBackground,
+} from 'react-native';
 import { getAuth, signInAnonymously } from 'firebase/auth';
 
 const Welcome = ({ navigation }) => {
@@ -16,16 +23,27 @@ const Welcome = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.appTitle}>Shopping Lists</Text>
-      <TouchableOpacity style={styles.startButton} onPress={signInUser}>
-        <Text style={styles.startButtonText}>Get Started</Text>
-      </TouchableOpacity>
-    </View>
+    <ImageBackground
+      source={require('../assets/adaptive-icon.png')}
+      style={styles.background}
+    >
+      <View style={styles.container}>
+        <Text style={styles.appTitle}>Shopping Lists</Text>
+        <TouchableOpacity style={styles.startButton} onPress={signInUser}>
+          <Text style={styles.startButtonText}>Get Started</Text>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -39,7 +57,7 @@ const styles = StyleSheet.create({
   startButton: {
     backgroundColor: '#000',
     height: 50,
-    width: '88%',
+    width: 100,
     justifyContent: 'center',
     alignItems: 'center',
   },

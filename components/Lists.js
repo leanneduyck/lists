@@ -65,11 +65,11 @@ const Lists = ({ db, route, isConnected }) => {
     }
   };
 
-  const addShoppingList = async (newList) => {
+  const addList = async (newList) => {
     const newListRef = await addDoc(collection(db, 'lists'), newList);
     if (newListRef.id) {
       setLists([newList, ...lists]);
-      Alert.alert(`The list "${listName}" has been added.`);
+      Alert.alert(`The "${listName}" list has been added.`);
     } else {
       Alert.alert('Unable to add. Please try later');
     }
