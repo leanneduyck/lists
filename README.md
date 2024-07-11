@@ -98,6 +98,9 @@ Setup Instructions:
    a. Run: expo install @react-native-async-storage/async-storage
    b. Then code accordingly
 
+8. Publish
+   a. Run: expo publish
+
 Github:
 To create new repo:
 
