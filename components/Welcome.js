@@ -28,7 +28,7 @@ const Welcome = ({ navigation }) => {
       style={styles.background}
     >
       <View style={styles.container}>
-        <Text style={styles.appTitle}>Shopping Lists</Text>
+        <Text style={styles.appTitle}>Lists</Text>
         <TouchableOpacity style={styles.startButton} onPress={signInUser}>
           <Text style={styles.startButtonText}>Get Started</Text>
         </TouchableOpacity>
