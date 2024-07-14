@@ -10,7 +10,7 @@ Key Features:
 5. Network Awareness: The app detects network connectivity changes and adjusts its functionality accordingly, syncing data with Firestore when online and using local storage when offline.
 6. Firestore Integration: Real-time synchronization with Firebase Firestore ensures that users’ data is up-to-date across all devices.
 
-Website:
+Expo Link: https://expo.dev/preview/update?message=readme%2C%20publishing&updateRuntimeVersion=exposdk%3A51.0.0&createdAt=2024-07-14T01%3A16%3A18.082Z&slug=exp&projectId=f7881931-7f6f-4af7-8c09-7b60c5813098&group=67ddf190-7ac9-4046-86be-bbb101d998dc
 
 Technologies Used:
 
