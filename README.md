@@ -1,5 +1,5 @@
 Overview:
-The Shopping Lists App is a mobile application built with React Native and Expo, designed to help users manage their shopping lists efficiently. The app allows users to create, update, and view shopping lists. It supports offline functionality, ensuring that users can access their lists even without an internet connection. Firebase Firestore is used for backend services, providing real-time data synchronization and offline data persistence.
+The Shopping Lists App is a mobile application built with React Native and Expo, designed to help users manage their shopping lists efficiently. The app allows users to create, update, and view shopping lists. It supports offline functionality (AsyncStorage), ensuring that users can access their lists even without an internet connection. Firebase Firestore is used for backend services, providing real-time data synchronization and offline data persistence.
 
 Key Features:
 
