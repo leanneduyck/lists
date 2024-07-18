@@ -19,7 +19,16 @@ Technologies Used:
 3. React Navigation: For managing navigation between screens.
 4. Firebase: For backend services including Firestore for data storage and Firebase Authentication for user authentication.
 5. React Native Gifted Chat: For providing a chat interface.
-6. React AsyncStorage: For local storage of chat data.
+6. React Native AsyncStorage: For local storage of chat data.
+7. Expo Updates: For handling over-the-air updates to the application.
+8. Expo Status Bar: For customizing the status bar appearance.
+9. React Native Dotenv: For managing environment variables.
+10. @react-native-community/netinfo: For handling network connectivity status.
+11. React Native Safe Area Context: For handling safe area insets for various devices.
+12. React Native Screens: For optimizing screen transitions and performance.
+13. Metro React Native Babel Preset: For Babel configuration specific to React Native.
+14. @babel/core: For Babel transpilation.
+
 
 Setup Instructions:
 
